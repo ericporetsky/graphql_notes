@@ -1,6 +1,7 @@
 
 require('dotenv').config()
 
+
 const development = {
   username: process.env.DEV_DB_USERNAME,
   password: null,
@@ -14,9 +15,13 @@ const production = {
   password: process.env.PROD_DB_PASSWORD,
   database: process.env.PROD_DB_NAME,
   host: process.env.PROD_DB_HOST,
-  dialect: 'postgres'
-}
+  dialect: 'postgres',
+  dialectOptions: {
+    ssl: "true",
+    sslfactory: "org.postgresql.ssl.NonValidatingFactory"
+  }
 
+}
 
 module.exports = {
   development: development,
