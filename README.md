@@ -29,13 +29,15 @@ type Note {
 }
 ```
 
-### Token
+### Auth
 
 Returns a JWT and (optional) user data on signup/login.
 
 ```
-token: String
-user: User
+type Auth { 
+	token: String
+	user: User
+}
 ```
 
 ## Query's
