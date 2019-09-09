@@ -35,8 +35,8 @@ Returns a JWT and (optional) user data on signup/login.
 
 ```
 type Auth { 
-	token: String
-	user: User
+  token: String
+  user: User
 }
 ```
 
