@@ -1,0 +1,28 @@
+{
+  "name": "noteapp",
+  "version": "1.0.0",
+  "description": "Note App + GraphQL API",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js",
+    "start": "node app.js"
+  },
+  "author": "Eric Poretsky",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.9.3",
+    "apollo-server-express": "^2.9.3",
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "express-graphql": "^0.9.0",
+    "express-jwt": "^5.3.1",
+    "graphql": "^14.5.4",
+    "pg": "^7.12.1",
+    "sequelize": "^5.18.1"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^5.5.1"
+  }
+}
