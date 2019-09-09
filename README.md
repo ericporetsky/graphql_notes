@@ -98,6 +98,14 @@ Deletes a note and returns a boolean indiciating whether or not the delete was s
 deleteNote(id: ID!): Boolean!
 ```
 
+## Testing
+
+You can test out the graphql database at
+
+```
+https://afternoon-stream-94264.herokuapp.com/graphql
+```
+
 
 
 
