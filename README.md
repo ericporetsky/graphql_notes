@@ -40,7 +40,7 @@ type Auth {
 }
 ```
 
-## Query's
+## Query
 
 ### me
 
@@ -58,7 +58,7 @@ Returns the user's notes.
 getNotes: [Note!]!
 ```
 
-## Mutations
+## Mutation
 
 ### login
 
