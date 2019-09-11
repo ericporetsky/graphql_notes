@@ -41,7 +41,7 @@ const server = new ApolloServer({
     user: req.user // current user
   })
 });
-app.use(auth); // add jwt check to gql endpoint
+app.use(gql_path, auth); // add jwt check to gql endpoint
 server.applyMiddleware({app, gql_path});
 
 //VIEWS

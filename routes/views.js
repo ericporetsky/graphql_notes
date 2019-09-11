@@ -44,7 +44,7 @@ router.get('/signup', (req, res) => {
 
 router.get('/login', (req, res) => {
   //redirect logged in users
-  if (req.cookies.token && session.id) {
+  if (req.cookies.token) {
       const session = jwt.verify(req.cookies.token,  jwt_secret);
       res.redirect(`/users/${session.id}`);
   }
