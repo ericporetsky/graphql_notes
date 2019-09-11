@@ -1,14 +1,7 @@
 
 require('dotenv').config;
 
-if (process.env.NODE_ENV === 'development') {
-	const graphql = `http://localhost:5000/graphql`;
-}
-else {
-	const graphql = `https://afternoon-stream-94264.herokuapp.com/graphql`;
-}
-
-
+const graphql = `https://afternoon-stream-94264.herokuapp.com/graphql`; //update with .env or .config
 
 const fetch = require('isomorphic-fetch');
 
