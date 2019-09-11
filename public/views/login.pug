@@ -1,0 +1,16 @@
+html
+	head
+		title="GraphQL Note App"
+	body
+		h1 GraphQL Note Taking  App
+		form(method="POST" action="/login")
+			input(type="text", placeholder="Enter Email", name="email" required)
+			br
+			br
+			input(type="password", placeholder="Password", name="password" required)
+			br
+			br
+			input(type="submit",  value="Login")
+		p Don't have an account? 
+			a(href="/signup") Signup
+	

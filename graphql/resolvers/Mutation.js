@@ -29,8 +29,6 @@ const signup = async (parent, args, context, info) => {
   }
 
   const token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: '1d'});
-
-  console.log(user)
   return {
     token, user
   }

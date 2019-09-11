@@ -1,0 +1,111 @@
+
+html
+	head
+		script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+		title GraphQL Note App | User #{info.id}
+	body
+		h1 Welcome #{info.email}
+		div.notes
+			each val, index in notes
+				ul.note(data-target=val.id)
+					div.note-action
+						li(data-target=val.id)=val.description
+						button.update Update
+						button.delete Delete
+		hr
+		form(method="POST" action="/createNote")
+			h3 Create a new note!
+			textarea(type="textarea", placeholder="Note description", name="description" required)
+			br
+			br
+			input(type="submit",  value="Add new note")
+		button(id="Logout") Logout
+
+
+style.
+	.notes {
+		display: flex;
+		flex-direction: column;
+	}
+	.note-action {
+		display: flex;
+	}
+	.note-action > li {
+		margin-right: 20px;
+	}
+	.note-action > button {
+		margin-right: 10px;
+	}
+	#logout {
+		padding: 0;
+		border: 0;
+		cursor: pointer;
+		color: blue;
+	}
+
+script.
+	$(document).ready(function() {
+
+		//DELETE A NOTE
+		$("button.delete").on("click", function() {
+			var id = $(this).siblings("li").data('target');
+			var data = {"id": id};
+
+			$.ajax({
+			    url: '/deleteNote', 
+			    type: 'POST', 
+			    contentType: 'application/json', 
+			    data: JSON.stringify({"id": id})}
+			).done(function(data) {
+				location.reload();
+			});
+		});
+
+		//UPDATE A NOTE
+		$("button.update").on("click", function() {
+			var id = $(this).siblings("li").data('target');
+			$(this).parent(".note-action").hide();
+			$(this).parent(".note-action").parent('.note').append(`
+				<div id="update-container-${id}">
+				<textarea placeholder='New note description' id="update-${id}"></textarea>
+				<button class="cancel" data-target=${id}>Cancel</button>
+				<button class="confirm" data-target=${id}>Confirm</button>
+				<div>
+				`);
+		});
+
+		//CANCEL UPDATE
+		$("body").on("click", "button.cancel",  function() {
+			var id = $(this).data('target');
+			$(this).closest(".note").children(".note-action").show();
+			$("#update-container-" + id).remove();
+		});
+
+		$("body").on("click", "button.confirm",  function() {
+			var id = $(this).data('target');
+			var description = $("#update-" + id).val();
+			$.ajax({
+			    url: '/updateNote', 
+			    type: 'POST', 
+			    contentType: 'application/json', 
+			    data: JSON.stringify({"id": id, "description": description})}
+			).done(function(data) {
+				location.reload();
+			});
+		});
+
+		//Logout
+		$("button#logout").on("click", function() {
+			$.ajax({
+			    url: '/logout', 
+			    type: 'POST', 
+			    contentType: 'application/json'
+			}).done(function(data) {
+				window.location.href="/login"
+			});
+		});
+
+
+
+	});
+	
