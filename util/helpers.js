@@ -1,5 +1,15 @@
 
-const graphql = `http://localhost:5000/graphql`;
+require('dotenv').config;
+
+if (process.env.NODE_ENV === 'development') {
+	const graphql = `http://localhost:5000/graphql`;
+}
+else {
+	const graphql = `https://afternoon-stream-94264.herokuapp.com/graphql`;
+}
+
+
+
 const fetch = require('isomorphic-fetch');
 
 const graphql_fetch = async (gql_query, jwt_token) => {
