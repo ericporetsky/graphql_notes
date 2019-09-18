@@ -89,18 +89,15 @@ router.get('/users/:id', verify, async (req, res) => {
 });
 
 //CREATE NOTE
-router.post('/createNote', async (req, res) => {
-
+router.post('/note', async (req, res) => {
   const description = req.body.description;
   const data = await createNote(description, req.cookies.token)
   res.redirect('back');
-
 });
 
 
 //DELETE NOTE
-router.post('/deleteNote', async (req, res) => {
-
+router.delete('/note', async (req, res) => {
   const id = req.body.id;
   const data = await deleteNote(id, req.cookies.token)
   if (data.deleteNote) {
@@ -109,11 +106,10 @@ router.post('/deleteNote', async (req, res) => {
   else {
     res.sendStatus(400);
   }
-
 });
 
 //UPDATE NOTE
-router.post('/updateNote', async (req, res) => {
+router.put('/note', async (req, res) => {
   const data = await updateNote(req.body, req.cookies.token)
   if (data.updateNote) {
     res.sendStatus(200);

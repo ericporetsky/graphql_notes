@@ -52,8 +52,8 @@ script.
 			var data = {"id": id};
 
 			$.ajax({
-			    url: '/deleteNote', 
-			    type: 'POST', 
+			    url: '/note', 
+			    type: 'DELETE', 
 			    contentType: 'application/json', 
 			    data: JSON.stringify({"id": id})}
 			).done(function(data) {
@@ -85,8 +85,8 @@ script.
 			var id = $(this).data('target');
 			var description = $("#update-" + id).val();
 			$.ajax({
-			    url: '/updateNote', 
-			    type: 'POST', 
+			    url: '/note', 
+			    type: 'PUT', 
 			    contentType: 'application/json', 
 			    data: JSON.stringify({"id": id, "description": description})}
 			).done(function(data) {
