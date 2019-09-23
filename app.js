@@ -12,6 +12,7 @@ const bodyParser = require('body-parser')
 const path=require('path');
 const port = process.env.PORT || 5000
 const views = require('./routes/views');
+const api = require('./routes/api');
 
 require('dotenv').config()
 
@@ -46,6 +47,7 @@ server.applyMiddleware({app, gql_path});
 
 //VIEWS
 app.use('/', views);
+app.use('/api', api); //api-like abstraction of views
 
 app.listen(port, () => {
 	console.log(`Listening on port ${port}!`)
