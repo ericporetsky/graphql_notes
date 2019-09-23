@@ -18,6 +18,12 @@ const verifyToken = (req, res, next) => {
     }
 }
 
+//HEALTH
+
+router.get('/health', (req, res) => {
+  return res.sendStatus(200);
+});
+
 //PROFILE
 router.get('/users/:id', verifyToken, async (req, res) => {
   const user = await User.findOne({ where: { id: req.params.id } });
