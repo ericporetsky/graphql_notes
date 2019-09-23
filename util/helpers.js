@@ -1,7 +1,7 @@
 
 require('dotenv').config;
 
-const graphql = process.env.GRAPHQL_ENDPOINT; //update with .env or .config
+const graphql = process.env.GRAPHQL_ENDPOINT; 
 
 const fetch = require('isomorphic-fetch');
 
