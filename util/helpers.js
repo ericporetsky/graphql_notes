@@ -1,8 +1,8 @@
 
 require('dotenv').config;
 
-// const graphql = `https://afternoon-stream-94264.herokuapp.com/graphql`; //update with .env or .config
-const graphql = `http://127.0.0.1:5000/graphql`;
+const graphql = `https://afternoon-stream-94264.herokuapp.com/graphql`; //update with .env or .config
+// const graphql = `http://127.0.0.1:5000/graphql`;
 const fetch = require('isomorphic-fetch');
 
 const graphql_fetch = async (gql_query, jwt_token) => {
